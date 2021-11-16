@@ -1,0 +1,34 @@
+{
+  "main": "gui/index.html",
+  "logo": "logo.png",
+  "preload": "preload.js",
+  "development": {
+    "main": "http://localhost:3000/"
+  },
+  "features": [
+    {
+      "code": "tblm_helper",
+      "explain": "淘宝联盟助手.",
+      "cmds": [
+        "淘宝联盟助手",
+        "淘宝联盟",
+        "pid",
+        "推广位",
+        "批量创建",
+        "pid批量",
+        "pid创建",
+        {
+          "type": "window",
+          "label": "淘宝联盟-批量创建pid",
+          "match": {
+            "app": [
+              "Google Chrome.app",
+              "chrome.exe"
+            ],
+            "title": "/淘宝联盟/"
+          }
+        }
+      ]
+    }
+  ]
+}
