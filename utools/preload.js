@@ -8,6 +8,10 @@ app.use(mount('/', serve(__dirname + '/public')));
 
 app.use(mount('/public', serve(__dirname + '/public')));
 
-app.listen(7899, () => {
-  console.log('服务已启动')
-});
+window.startServer = () => {
+  return new Promise(resolve => {
+    app.listen(7899, '0.0.0.0', () => {
+      resolve(7899)
+    });
+  })
+}

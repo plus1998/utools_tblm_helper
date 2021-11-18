@@ -163,6 +163,7 @@ declare global {
 	interface Window {
 		api?: {};
 		pid_generate?: any;
+		startServer?: any;
 		utools?: {
 			onPluginReady: any;
 			setExpendHeight: any;
@@ -172,6 +173,7 @@ declare global {
 			ubrowser?: any;
 			getIdleUBrowsers?: any;
 			showMainWindow?: any;
+			showNotification?: any;
 		};
 	}
 }
@@ -193,7 +195,7 @@ const generateQrcode = (str: string) => {
 	dialogVisible.value = true;
 };
 const ready = ref(false);
-const utoolInit = () => {
+const utoolInit = async () => {
 	if (!window.utools) {
 		setTimeout(() => utoolInit, 500)
 		return
@@ -206,6 +208,10 @@ const utoolInit = () => {
 		ready.value = true;
 		console.log('插件初始化')
 	});
+	const port = await window.startServer()
+	const message = '服务已启动, 端口 ' + port
+	console.log(message)
+	window.utools.showNotification(message)
 }
 // 代码
 const injectCode = `
